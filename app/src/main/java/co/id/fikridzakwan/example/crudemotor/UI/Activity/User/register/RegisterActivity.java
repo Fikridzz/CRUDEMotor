@@ -3,6 +3,7 @@ package co.id.fikridzakwan.example.crudemotor.UI.Activity.User.register;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterConst
     private ProgressDialog progressDialog;
     private String jenkel;
     private String level;
+    private String TAG = "TAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +92,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterConst
     public void showRegisterSuccess(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, LoginActivity.class));
+        Log.i("cek" , "showRegisterSuccess: masuk");
         finish();
+        return;
     }
 
     @OnClick({R.id.rb_male, R.id.rb_female, R.id.rb_admin, R.id.rb_user, R.id.btn_register})

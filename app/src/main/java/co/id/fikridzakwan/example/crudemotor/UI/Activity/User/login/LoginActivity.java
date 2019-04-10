@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
 
     private LoginPresenter loginPresenter = new LoginPresenter(this);
     private ProgressDialog progressDialog;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
 
         startActivity(new Intent(this, MainActivity.class).putExtra(Constants.KEY_LOGIN, mLoginData));
         finish();
+        return;
     }
 
     @Override

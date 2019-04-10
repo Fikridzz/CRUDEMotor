@@ -10,6 +10,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 public class RegisterPresenter implements RegisterConstract.Presenter {
 
     private final RegisterConstract.View view;
@@ -35,20 +37,25 @@ public class RegisterPresenter implements RegisterConstract.Presenter {
                         loginData.getNamauser(),
                         loginData.getAlamat(),
                         loginData.getNotelp(),
+                        loginData.getJenkel(),
                         loginData.getUsername(),
                         loginData.getPassword(),
-                        loginData.getJenkel(),
                         loginData.getLevel());
                 call.enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                        Log.i("cek", "onResponse: masuk");
+
                         view.hideProgress();
 
                         if (response.body() != null) {
+                            Log.i("cek", "body: ada");
+
                             if (response.body().getResult() == 1) {
+                                Log.i("cek", "onResponse: login success");
                                 view.showRegisterSuccess(response.body().getMessage());
                             } else {
-                                view.showError(response.body().getMessage());
+                                view.showError("result 0");
                             }
                         } else {
                             view.showError("Data kosong");

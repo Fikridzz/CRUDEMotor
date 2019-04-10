@@ -1,6 +1,7 @@
 package co.id.fikridzakwan.example.crudemotor.UI.Activity.User.login;
 
 import android.content.Context;
+import android.util.Log;
 
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiClient;
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiInterface;
@@ -40,9 +41,14 @@ public class LoginPresenter implements LoginConstract.Presenter {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 view.hideProgress();
+                Log.i("cek", "onResponse: masuk");
 
                 if (response.body() != null) {
+                    Log.i("cek", "body: ada");
+
                     if (response.body().getResult() == 1) {
+                        Log.i("cek", "onResponse: login success");
+
                         if (response.body().getData() != null) {
                             view.loginSuccess(response.body().getMessage(), response.body().getData());
                         } else {
