@@ -26,6 +26,7 @@
             android:id="@+id/edt_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/EditTextColor"
             android:hint="@string/username"
             android:singleLine="true" />
 
@@ -41,6 +42,7 @@
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/EditTextColor"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:singleLine="true" />

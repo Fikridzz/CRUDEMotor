@@ -5,17 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".UI.Fragment.home.HomeFragment">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="15dp"
-        android:tint="@color/colorWhite"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:src="@android:drawable/ic_input_add"
-        android:foregroundTint="@color/colorPrimaryDark" />
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
@@ -30,9 +19,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_motor_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_motor_news">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 

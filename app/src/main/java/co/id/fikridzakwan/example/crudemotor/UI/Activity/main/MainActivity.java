@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import co.id.fikridzakwan.example.crudemotor.R;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.home.HomeFragment;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.profile.ProfileFragment;
-import co.id.fikridzakwan.example.crudemotor.UI.Fragment.search.SearchFragment;
+import co.id.fikridzakwan.example.crudemotor.UI.Fragment.upload.UploadFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
                     HomeFragment homeFragment = new HomeFragment();
                     loadFragment(homeFragment);
                     return true;
-                case R.id.navigation_search:
-                    SearchFragment searchFragment = new SearchFragment();
-                    loadFragment(searchFragment);
+                case R.id.navigation_upload:
+                     UploadFragment uploadFragment = new UploadFragment();
+                    loadFragment(uploadFragment);
                     return true;
                 case R.id.navigation_profile:
                     ProfileFragment profileFragment = new ProfileFragment();

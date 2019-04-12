@@ -13,4 +13,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="EditTextColor">
+        <item name="colorControlNormal">#608EA0</item>
+        <item name="colorControlActivated">#33B5E5</item>
+        <item name="colorControlHighlight">#33B5E5</item>
+    </style>
+
 </resources>

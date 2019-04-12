@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.id.fikridzakwan.example.crudemotor">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Activity.User.register.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".UI.Activity.User.login.LoginActivity"
+        <activity android:name=".UI.Activity.editprofile.EditProfileActivity"></activity>
+        <activity
+            android:name=".UI.Activity.User.register.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.Activity.User.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +26,7 @@
         </activity>
         <activity
             android:name=".UI.Activity.main.MainActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"></activity>
     </application>
 
 </manifest>

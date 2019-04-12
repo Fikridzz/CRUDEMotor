@@ -7,9 +7,10 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_search"
-        android:title="@string/search" />
+        android:id="@+id/navigation_upload"
+        android:icon="@drawable/ic_addbutton"
+        android:iconTint="@android:color/black"
+        android:title="@string/upload" />
 
     <item
         android:id="@+id/navigation_profile"

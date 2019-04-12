@@ -63,6 +63,8 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
     public void loginSuccess(String msg, LoginData loginData) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
+        loginPresenter.saveDataUser(this, loginData);
+
         LoginData mLoginData = new LoginData();
 
         mLoginData.setIduser(loginData.getIduser());

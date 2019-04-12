@@ -31,6 +31,7 @@
                 android:id="@+id/edt_nama_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:theme="@style/EditTextColor"
                 android:hint="@string/namauser"
                 android:layout_weight="1"
                 android:singleLine="true" />
@@ -46,6 +47,7 @@
                 android:id="@+id/edt_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:theme="@style/EditTextColor"
                 android:hint="@string/alamat"
                 android:layout_weight="1"
                 android:singleLine="true" />
@@ -61,6 +63,7 @@
                 android:id="@+id/edt_notelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:theme="@style/EditTextColor"
                 android:hint="@string/notelpone"
                 android:layout_weight="1"
                 android:singleLine="true" />
@@ -106,6 +109,7 @@
                 android:id="@+id/edt_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:theme="@style/EditTextColor"
                 android:hint="@string/username"
                 android:layout_weight="1"
                 android:singleLine="true" />
@@ -122,6 +126,7 @@
                 android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:theme="@style/EditTextColor"
                 android:hint="@string/password"
                 android:layout_weight="1"
                 android:singleLine="true"
