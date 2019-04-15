@@ -20,6 +20,14 @@
                 android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_kategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_motor_kategory">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_motor_news"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
