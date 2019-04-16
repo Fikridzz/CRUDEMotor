@@ -21,26 +21,18 @@
             android:id="@+id/txt_nama_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/img_user"
+            android:layout_marginTop="20dp"
             android:text="Nama user" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/ic_more_vert" />
 
         <TextView
             android:id="@+id/txt_nama_motor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img_user"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Nama motor" />
+            android:text="Nama motor"
+            android:layout_below="@+id/img_user"/>
 
     </RelativeLayout>
 

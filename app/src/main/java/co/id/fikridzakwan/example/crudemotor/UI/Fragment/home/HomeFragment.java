@@ -92,4 +92,11 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
     public void showFailurMessage(String msg) {
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onResume() {
+        mHomePresenter.getListKategoryMotor();
+        mHomePresenter.getListNewsmotor();
+        super.onResume();
+    }
 }

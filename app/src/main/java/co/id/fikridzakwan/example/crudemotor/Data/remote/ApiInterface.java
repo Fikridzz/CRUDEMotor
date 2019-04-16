@@ -67,7 +67,7 @@ public interface ApiInterface {
 
     // Mengambil data berdasarkan kategory
     @GET("getmotorbykategori.php")
-    Call<MotorResponse> getKategoriMotor(@Query("idkategori") int idKategori);
+    Call<MotorResponse> getMotorByKategory(@Query("idkategori") int idKategori);
 
     // Mengambil data bedasarkan user
     @GET("getmotorbyuser.php")

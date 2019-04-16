@@ -103,6 +103,7 @@
             android:background="@drawable/shape2"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_by_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_your_post"

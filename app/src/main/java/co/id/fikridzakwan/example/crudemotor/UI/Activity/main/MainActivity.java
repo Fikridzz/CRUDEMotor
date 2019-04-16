@@ -1,6 +1,7 @@
 package co.id.fikridzakwan.example.crudemotor.UI.Activity.main;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
@@ -19,7 +20,7 @@ import co.id.fikridzakwan.example.crudemotor.UI.Fragment.home.HomeFragment;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.profile.ProfileFragment;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.upload.UploadFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainConstract.View {
 
     @BindView(R.id.fl_container)
     FrameLayout flContainer;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.container)
     RelativeLayout container;
     private TextView mTextMessage;
+    private MainPresenter mMainPresenter = new MainPresenter();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -65,6 +67,23 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment homeFragment = new HomeFragment();
         loadFragment(homeFragment);
         setTitle("Home");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.logout, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_logout:
+                mMainPresenter.logoutSesion(this);
+                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
     }
 
     private void loadFragment(Fragment fragment) {

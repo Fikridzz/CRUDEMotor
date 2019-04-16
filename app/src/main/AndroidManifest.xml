@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Activity.editprofile.EditProfileActivity"></activity>
+        <activity android:name=".UI.Activity.detailmotor.DetailMotorActivity"></activity>
+        <activity android:name=".UI.Activity.detailbyuser.DetailByUserActivity" />
+        <activity android:name=".UI.Activity.bykategory.MotorByKategoryActivity" />
+        <activity android:name=".UI.Activity.editprofile.EditProfileActivity" />
         <activity
             android:name=".UI.Activity.User.register.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -26,7 +29,7 @@
         </activity>
         <activity
             android:name=".UI.Activity.main.MainActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

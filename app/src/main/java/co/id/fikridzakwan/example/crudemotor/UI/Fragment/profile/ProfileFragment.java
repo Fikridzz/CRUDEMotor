@@ -2,22 +2,32 @@ package co.id.fikridzakwan.example.crudemotor.UI.Fragment.profile;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
+import co.id.fikridzakwan.example.crudemotor.Data.adapter.AdapterByUserMotor;
 import co.id.fikridzakwan.example.crudemotor.Model.login.LoginData;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorData;
 import co.id.fikridzakwan.example.crudemotor.R;
 import co.id.fikridzakwan.example.crudemotor.UI.Activity.editprofile.EditProfileActivity;
+import co.id.fikridzakwan.example.crudemotor.Utilts.Constants;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -38,9 +48,12 @@ public class ProfileFragment extends Fragment implements ProfileConstract.View {
     CardView cdEditProfile;
     @BindView(R.id.txt_your_post)
     TextView txtYourPost;
+    @BindView(R.id.rv_by_user)
+    RecyclerView rvByUser;
+    Unbinder unbinder;
 
     private ProfilePresenter mProfilePresenter = new ProfilePresenter(this);
-    private String nama;
+    private String idUser, nama;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -51,12 +64,34 @@ public class ProfileFragment extends Fragment implements ProfileConstract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        unbinder = ButterKnife.bind(this, view);
+
+        SharedPreferences pref =  getContext().getSharedPreferences(Constants.pref_name,0);
+
+        idUser = pref.getString(Constants.KEY_USER_ID,"");
+
+        mProfilePresenter.getMotorListByUser(idUser);
+
+        mProfilePresenter.getDataUser(getContext());
+
+        return view;
     }
 
     @Override
     public void showMotorListByUser(List<MotorData> motorDataList) {
+        rvByUser.setAdapter(new AdapterByUserMotor(getContext(), motorDataList));
+        rvByUser.setLayoutManager(new GridLayoutManager(getContext(), 3));
+    }
 
+    @Override
+    public void showFailurMessage(String msg) {
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showDataUser(LoginData loginData) {
+        txtNamaUser.setText(loginData.getUsername());
     }
 
     @OnClick(R.id.cd_edit_profile)
