@@ -36,7 +36,8 @@ public class AdapterByKategoryMotor extends RecyclerView.Adapter<AdapterByKatego
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_motor_by_kategory, parent, false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_motor_by_kategory
+                , parent, false));
     }
 
     @Override
@@ -79,6 +80,7 @@ public class AdapterByKategoryMotor extends RecyclerView.Adapter<AdapterByKatego
         TextView txtViewNumber;
         @BindView(R.id.txt_deskription)
         TextView txtDeskription;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

@@ -1,93 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_user"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_launcher_round" />
-
-        <TextView
-            android:id="@+id/txt_nama_user"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@id/img_user"
-            android:text="Nama user" />
+            android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/ic_more_vert_black" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_launcher_round" />
 
-        <TextView
-            android:id="@+id/txt_nama_motor"
+            <TextView
+                android:id="@+id/txt_nama_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/img_user"
+                android:text="Nama user" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="17dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_more_vert_black" />
+
+            <TextView
+                android:id="@+id/txt_nama_motor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_user"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Nama motor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img_user"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Nama motor" />
+            android:layout_height="wrap_content">
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/img_motor"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@tools:sample/avatars" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_motor"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/txt_view_number"
+                android:text="View"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/img_motor"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="fitCenter"
-            tools:srcCompat="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/txt_view_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_motor"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Number view"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txt_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_motor"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/txt_view_number"
-            android:text="View"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txt_deskription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_view"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Deskription" />
 
-        <TextView
-            android:id="@+id/txt_view_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_motor"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Number view"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/txt_deskription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_view"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Deskription" />
+    </LinearLayout>
 
-    </RelativeLayout>
-
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

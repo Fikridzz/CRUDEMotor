@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorData;
 import co.id.fikridzakwan.example.crudemotor.R;
-import co.id.fikridzakwan.example.crudemotor.UI.Activity.detailkategory.DetailByKategoryActivity;
+import co.id.fikridzakwan.example.crudemotor.UI.Activity.bykategory.MotorByKategoryActivity;
 import co.id.fikridzakwan.example.crudemotor.Utilts.Constants;
 
 public class AdapterKategoryMotor extends RecyclerView.Adapter<AdapterKategoryMotor.ViewHolder> {
@@ -52,7 +52,7 @@ public class AdapterKategoryMotor extends RecyclerView.Adapter<AdapterKategoryMo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, DetailByKategoryActivity.class).putExtra(Constants.KEY_EXTRA_ID_KATEGORY, motorData.getIdKategori()));
+                context.startActivity(new Intent(context, MotorByKategoryActivity.class).putExtra(Constants.KEY_EXTRA_ID_KATEGORY, motorData.getIdKategori()));
             }
         });
     }

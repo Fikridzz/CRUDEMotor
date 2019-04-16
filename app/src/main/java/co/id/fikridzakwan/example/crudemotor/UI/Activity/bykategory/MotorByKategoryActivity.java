@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.id.fikridzakwan.example.crudemotor.Data.adapter.AdapterByKategoryMotor;
 import co.id.fikridzakwan.example.crudemotor.Data.adapter.AdapterKategoryMotor;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorData;
 import co.id.fikridzakwan.example.crudemotor.R;
@@ -70,7 +71,7 @@ public class MotorByKategoryActivity extends AppCompatActivity implements MotorB
     @Override
     public void showListMotorByKategory(List<MotorData> mototByKategoryList) {
         rvMotor.setLayoutManager(new LinearLayoutManager(this));
-        rvMotor.setAdapter(new AdapterKategoryMotor(this, mototByKategoryList));
+        rvMotor.setAdapter(new AdapterByKategoryMotor(this, mototByKategoryList));
     }
 
     @Override

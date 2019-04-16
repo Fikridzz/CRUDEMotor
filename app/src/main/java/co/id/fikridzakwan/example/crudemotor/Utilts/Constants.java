@@ -5,6 +5,8 @@ public class Constants {
     public static final String KEY_IS_LOGIN = "KEY_IS_LOGIN";
     public static final String KEY_EXTRA_ID_KATEGORY = "KEY_EXTRA_ID_KATEGORY";
     public static final String KEY_EXTRA_ID_MOTOR = "KEY_EXTRA_ID_MOTOR";
+    public static final int STORAGE_PERMISSION_CODE = 1;
+    public static final int REQUEST_CODE = 2;
 
     public static String pref_name = "pref_name";
     public static final String KEY_LOGIN = "KEY_LOGIN";

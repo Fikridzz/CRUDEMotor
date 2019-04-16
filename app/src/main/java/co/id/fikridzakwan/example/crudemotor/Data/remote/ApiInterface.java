@@ -58,7 +58,6 @@ public interface ApiInterface {
                                      @Part("idkategori") int idKategori,
                                      @Part("namamotor") RequestBody namaMotor,
                                      @Part("descmotor") RequestBody descMotor,
-                                     @Part("inserttime") RequestBody insertTime,
                                      @Part MultipartBody.Part image);
 
     // Mengambil detail motor
@@ -87,6 +86,5 @@ public interface ApiInterface {
                                     @Part("namamotor") RequestBody namaMotor,
                                     @Part("descmotor") RequestBody descMotor,
                                     @Part("fotomotor") RequestBody fotoMotor,
-                                    @Part("inserttime") RequestBody insertTime,
                                     @Part MultipartBody.Part image);
 }
