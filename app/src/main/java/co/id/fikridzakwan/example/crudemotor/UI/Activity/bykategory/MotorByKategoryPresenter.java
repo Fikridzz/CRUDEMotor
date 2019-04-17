@@ -1,5 +1,7 @@
 package co.id.fikridzakwan.example.crudemotor.UI.Activity.bykategory;
 
+import android.util.Log;
+
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiClient;
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiInterface;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorResponse;
@@ -21,7 +23,8 @@ public class MotorByKategoryPresenter implements MotorByKategoryConstract.Presen
         view.showProgress();
 
         if (idKategory.isEmpty()) {
-            view.showFailureMessage("ID kategori tidak ada");
+            Log.i("cek", "getListMotorByKategory: " + idKategory);
+            view.showFailureMessage("ID Kategory tidak ada");
             return;
         }
 
@@ -34,6 +37,8 @@ public class MotorByKategoryPresenter implements MotorByKategoryConstract.Presen
                 if (response.body() != null) {
                     if (response.body().getResult() == 1) {
                         view.showListMotorByKategory(response.body().getMotorDataList());
+                    } else {
+                        view.showFailureMessage(response.body().getMessage());
                     }
                 } else {
                     view.showFailureMessage("Data kosong");

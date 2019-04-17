@@ -1,7 +1,7 @@
 package co.id.fikridzakwan.example.crudemotor.Utilts;
 
 public class Constants {
-    public static final String BASE_URL = "http://192.168.70.126/motor/";
+    public static final String BASE_URL = "http://192.168.70.69/motor/";
     public static final String KEY_IS_LOGIN = "KEY_IS_LOGIN";
     public static final String KEY_EXTRA_ID_KATEGORY = "KEY_EXTRA_ID_KATEGORY";
     public static final String KEY_EXTRA_ID_MOTOR = "KEY_EXTRA_ID_MOTOR";

@@ -1,6 +1,7 @@
 package co.id.fikridzakwan.example.crudemotor.UI.Activity.bykategory;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -45,6 +46,7 @@ public class MotorByKategoryActivity extends AppCompatActivity implements MotorB
         idKategory = getIntent().getStringExtra(Constants.KEY_EXTRA_ID_KATEGORY);
 
         motorByKategoryPresenter.getListMotorByKategory(idKategory);
+        Log.i("cek", "idkateogry" + idKategory);
 
         srMotor.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -80,5 +82,11 @@ public class MotorByKategoryActivity extends AppCompatActivity implements MotorB
         rvMotor.setVisibility(View.GONE);
         pbLoading.setVisibility(View.GONE);
         txtInfo.setText(msg);
+    }
+
+    @Override
+    public void onResume() {
+        motorByKategoryPresenter.getListMotorByKategory(idKategory);
+        super.onResume();
     }
 }

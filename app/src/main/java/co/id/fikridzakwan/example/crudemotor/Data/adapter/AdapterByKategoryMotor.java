@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorData;
 import co.id.fikridzakwan.example.crudemotor.R;
 import co.id.fikridzakwan.example.crudemotor.UI.Activity.bykategory.MotorByKategoryActivity;
+import co.id.fikridzakwan.example.crudemotor.UI.Activity.detailmotor.DetailMotorActivity;
 import co.id.fikridzakwan.example.crudemotor.Utilts.Constants;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -36,8 +37,7 @@ public class AdapterByKategoryMotor extends RecyclerView.Adapter<AdapterByKatego
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_motor_by_kategory
-                , parent, false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_motor_by_kategory, parent, false));
     }
 
     @Override
@@ -55,7 +55,7 @@ public class AdapterByKategoryMotor extends RecyclerView.Adapter<AdapterByKatego
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, MotorByKategoryActivity.class).putExtra(Constants.KEY_EXTRA_ID_MOTOR, motorData.getIdKategori()));
+                context.startActivity(new Intent(context, DetailMotorActivity.class).putExtra(Constants.KEY_EXTRA_ID_MOTOR, motorData.getIdMotor()));
             }
         });
     }
