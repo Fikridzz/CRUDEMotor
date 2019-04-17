@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -75,6 +76,8 @@ public class ProfileFragment extends Fragment implements ProfileConstract.View {
 
         mProfilePresenter.getDataUser(getContext());
 
+        setHasOptionsMenu(true);
+
         return view;
     }
 
@@ -82,6 +85,7 @@ public class ProfileFragment extends Fragment implements ProfileConstract.View {
     public void showMotorListByUser(List<MotorData> motorDataList) {
         rvByUser.setAdapter(new AdapterByUserMotor(getContext(), motorDataList));
         rvByUser.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        txtAngkaPost.setText(String.valueOf(motorDataList.size()));
     }
 
     @Override
@@ -97,5 +101,28 @@ public class ProfileFragment extends Fragment implements ProfileConstract.View {
     @OnClick(R.id.cd_edit_profile)
     public void onViewClicked() {
         startActivity(new Intent(getContext(), EditProfileActivity.class));
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.logout, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_logout:
+                mProfilePresenter.logoutSesion(getContext());
+                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        mProfilePresenter.getMotorListByUser(idUser);
+        super.onResume();
     }
 }

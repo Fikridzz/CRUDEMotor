@@ -9,6 +9,7 @@ import co.id.fikridzakwan.example.crudemotor.Model.login.LoginData;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorData;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorResponse;
 import co.id.fikridzakwan.example.crudemotor.Utilts.Constants;
+import co.id.fikridzakwan.example.crudemotor.Utilts.SessionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -61,5 +62,11 @@ public class ProfilePresenter implements ProfileConstract.Presenter {
                 view.showFailurMessage(t.getMessage());
             }
         });
+    }
+
+    @Override
+    public void logoutSesion(Context context) {
+        SessionManager sessionManager = new SessionManager(context);
+        sessionManager.logout();
     }
 }

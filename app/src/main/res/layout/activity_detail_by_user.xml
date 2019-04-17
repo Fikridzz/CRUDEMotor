@@ -31,12 +31,14 @@
                 android:layout_toRightOf="@id/img_user"
                 android:text="Nama user" />
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/overflow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="17dp"
                 android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_more_vert_black" />
 
             <TextView

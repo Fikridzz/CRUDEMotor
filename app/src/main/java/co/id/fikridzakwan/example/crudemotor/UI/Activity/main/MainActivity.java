@@ -1,5 +1,6 @@
 package co.id.fikridzakwan.example.crudemotor.UI.Activity.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.id.fikridzakwan.example.crudemotor.R;
+import co.id.fikridzakwan.example.crudemotor.UI.Activity.upload.UploadActivity;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.home.HomeFragment;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.profile.ProfileFragment;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.upload.UploadFragment;
@@ -42,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
                     loadFragment(homeFragment);
                     return true;
                 case R.id.navigation_upload:
-                     UploadFragment uploadFragment = new UploadFragment();
-                    loadFragment(uploadFragment);
+                    UploadActivity uploadActivity = new UploadActivity();
+                    startActivity(new Intent(MainActivity.this, UploadActivity.class));
                     return true;
                 case R.id.navigation_profile:
                     ProfileFragment profileFragment = new ProfileFragment();
@@ -69,22 +71,22 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
         setTitle("Home");
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.logout, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_logout:
-                mMainPresenter.logoutSesion(this);
-                return true;
-                default:
-                    return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.logout, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.menu_logout:
+//                mMainPresenter.logoutSesion(this);
+//                return true;
+//                default:
+//                    return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

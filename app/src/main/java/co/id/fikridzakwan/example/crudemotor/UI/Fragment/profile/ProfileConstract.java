@@ -16,5 +16,6 @@ public interface ProfileConstract {
     interface Presenter {
         void getDataUser(Context context);
         void getMotorListByUser(String idUser);
+        void logoutSesion(Context context);
     }
 }

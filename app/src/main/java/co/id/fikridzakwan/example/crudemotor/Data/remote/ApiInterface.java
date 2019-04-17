@@ -76,7 +76,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("deletemotor.php")
     Call<MotorResponse> deleteMotor(@Field("idmotor") int idMotor,
-                                    @Field("fotomotor") String fotoMotor);
+                                    @Field("fotomotor") String namaFotoMotor);
 
     // Update motor
     @Multipart
