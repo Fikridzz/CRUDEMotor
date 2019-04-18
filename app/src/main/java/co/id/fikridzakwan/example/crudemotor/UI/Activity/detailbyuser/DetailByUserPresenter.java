@@ -2,6 +2,8 @@ package co.id.fikridzakwan.example.crudemotor.UI.Activity.detailbyuser;
 
 import android.content.Context;
 
+import java.io.File;
+
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiClient;
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiInterface;
 import co.id.fikridzakwan.example.crudemotor.Model.detail.DetailMotorResponse;
