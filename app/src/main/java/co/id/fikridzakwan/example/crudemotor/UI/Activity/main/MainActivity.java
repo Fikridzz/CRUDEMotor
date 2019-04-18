@@ -2,7 +2,6 @@ package co.id.fikridzakwan.example.crudemotor.UI.Activity.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
@@ -20,7 +19,6 @@ import co.id.fikridzakwan.example.crudemotor.R;
 import co.id.fikridzakwan.example.crudemotor.UI.Activity.upload.UploadActivity;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.home.HomeFragment;
 import co.id.fikridzakwan.example.crudemotor.UI.Fragment.profile.ProfileFragment;
-import co.id.fikridzakwan.example.crudemotor.UI.Fragment.upload.UploadFragment;
 
 public class MainActivity extends AppCompatActivity implements MainConstract.View {
 
