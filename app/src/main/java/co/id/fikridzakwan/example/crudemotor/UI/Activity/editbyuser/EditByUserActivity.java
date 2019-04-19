@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,8 +43,6 @@ public class EditByUserActivity extends AppCompatActivity implements EditByUserC
 
     @BindView(R.id.img_picture)
     ImageView imgPicture;
-    @BindView(R.id.fab_choose_picture)
-    FloatingActionButton fabChoosePicture;
     @BindView(R.id.layoutPicture)
     CardView layoutPicture;
     @BindView(R.id.edt_name)
@@ -73,6 +72,18 @@ public class EditByUserActivity extends AppCompatActivity implements EditByUserC
         ButterKnife.bind(this);
 
         permissionGallery();
+
+        idMotor = getIntent().getStringExtra(Constants.KEY_EXTRA_ID_MOTOR);
+        mEditByUserPresenter.getKategory();
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefresh.setRefreshing(false);
+
+                mEditByUserPresenter.getKategory();
+            }
+        });
     }
 
     private void permissionGallery() {
@@ -126,11 +137,11 @@ public class EditByUserActivity extends AppCompatActivity implements EditByUserC
         edtName.setText(motorData.getNamaMotor());
         edtDesc.setText(motorData.getDescMotor());
 
-        for (int i = 0 ;i <mIdKategory.length; i++){
+        for (int i = 0; i < mIdKategory.length; i++) {
 
             Log.i("cek", "isi loop select mIdCategory: " + mIdKategory[i]);
 
-            if (Integer.valueOf(mIdKategory[i]).equals(Integer.valueOf(idKategory))){
+            if (Integer.valueOf(mIdKategory[i]).equals(Integer.valueOf(idKategory))) {
                 spinKategory.setSelection(i);
                 Log.i("cek", "isi select mIdCategory: " + mIdKategory[i]);
                 Log.i("cek", "isi select idCategory: " + mIdKategory);
@@ -153,7 +164,7 @@ public class EditByUserActivity extends AppCompatActivity implements EditByUserC
 
     @Override
     public void showSpinnerKategory(List<MotorData> kategoryDataList) {
-        String [] namaKategory = new String[kategoryDataList.size()];
+        String[] namaKategory = new String[kategoryDataList.size()];
         mIdKategory = new String[kategoryDataList.size()];
 
         for (int i = 0; i < kategoryDataList.size(); i++) {
@@ -167,7 +178,6 @@ public class EditByUserActivity extends AppCompatActivity implements EditByUserC
         spinKategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Mengambil id category sesuai dengan pilihan user
                 idKategory = kategoryDataList.get(position).getIdKategori();
             }
 
@@ -178,51 +188,16 @@ public class EditByUserActivity extends AppCompatActivity implements EditByUserC
         });
 
         mEditByUserPresenter.getDetailMotor(idMotor);
+        Log.i("cek", "idMotor masuk " + idMotor);
     }
 
-    @OnClick({R.id.fab_choose_picture, R.id.btn_update})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.fab_choose_picture:
-                permissionGallery();
-                showFileChooser();
-                break;
-            case R.id.btn_update:
-                mEditByUserPresenter.updateDataMotor(
-                        this,
-                        filePath,
-                        edtName.getText().toString(),
-                        edtDesc.getText().toString(),
-                        idKategory,
-                        namaFotoMotor,
-                        idMotor);
-                break;
-        }
-    }
-
-    private void showFileChooser() {
-        Intent intentGallery = new Intent(Intent.ACTION_PICK);
-        intentGallery.setType("image/*");
-        intentGallery.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intentGallery, "Select Pictures"), 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 &&
-                resultCode == RESULT_OK &&
-                data != null &&
-                data.getData() != null
-        ) {
-            filePath = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imgPicture.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    @OnClick(R.id.btn_update)
+    public void onViewClicked() {
+        mEditByUserPresenter.updateDataMotor(
+                this,
+                edtName.getText().toString(),
+                edtDesc.getText().toString(),
+                idKategory,
+                idMotor);
     }
 }

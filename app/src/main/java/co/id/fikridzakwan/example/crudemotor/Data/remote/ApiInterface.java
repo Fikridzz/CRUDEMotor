@@ -79,12 +79,10 @@ public interface ApiInterface {
                                     @Field("fotomotor") String namaFotoMotor);
 
     // Update motor
-    @Multipart
+    @FormUrlEncoded
     @POST("updatemotor.php")
-    Call<MotorResponse> updateMotor(@Part("idmotor") int idMotor,
-                                    @Part("idkategori") int idKategori,
-                                    @Part("namamotor") RequestBody namaMotor,
-                                    @Part("descmotor") RequestBody descMotor,
-                                    @Part("fotomotor") RequestBody fotoMotor,
-                                    @Part MultipartBody.Part image);
+    Call<MotorResponse> updateMotor(@Field("idmotor") int idMotor,
+                                    @Field("idkategori") int idKategori,
+                                    @Field("namamotor") String  namaMotor,
+                                    @Field("descmotor") String descMotor);
 }

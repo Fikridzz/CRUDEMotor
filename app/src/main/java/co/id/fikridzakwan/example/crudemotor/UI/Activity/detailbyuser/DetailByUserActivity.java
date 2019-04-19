@@ -76,8 +76,8 @@ public class DetailByUserActivity extends AppCompatActivity implements DetailByU
                         switch (item.getItemId()) {
                             case R.id.menu_edit:
                                 SharedPreferences pref = getSharedPreferences(Constants.pref_name, 0);
-                                String mIdUser = pref.getString(Constants.KEY_USER_ID, "");
-                                startActivity(new Intent(DetailByUserActivity.this, EditByUserActivity.class).putExtra(Constants.KEY_EXTRA_ID_USER, mIdUser));
+                                String mIdMotor = mMotorData.getIdMotor();
+                                startActivity(new Intent(DetailByUserActivity.this, EditByUserActivity.class).putExtra(Constants.KEY_EXTRA_ID_MOTOR, mIdMotor));
                                 break;
                             case R.id.menu_delete:
                                 detailByUserPresenter.deleteDetailMotor(idMotor, namaFotoMotor);
@@ -128,5 +128,11 @@ public class DetailByUserActivity extends AppCompatActivity implements DetailByU
     @Override
     public void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResume() {
+        detailByUserPresenter.getDetailMotor(idMotor);
+        super.onResume();
     }
 }

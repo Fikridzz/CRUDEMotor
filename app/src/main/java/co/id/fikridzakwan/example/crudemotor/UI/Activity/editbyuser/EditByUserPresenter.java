@@ -12,6 +12,7 @@ import java.io.File;
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiClient;
 import co.id.fikridzakwan.example.crudemotor.Data.remote.ApiInterface;
 import co.id.fikridzakwan.example.crudemotor.Model.detail.DetailMotorResponse;
+import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorData;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorResponse;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -66,6 +67,7 @@ public class EditByUserPresenter implements EditByUserConstract.Presenter {
         if (idMotor.isEmpty()) {
             view.hideProgress();
             view.showMessage("ID Motor tidak ada");
+            Log.i("cek", "getDetailMotor: masuk " + idMotor);
             return;
         }
 
@@ -95,7 +97,7 @@ public class EditByUserPresenter implements EditByUserConstract.Presenter {
     }
 
     @Override
-    public void updateDataMotor(Context context, Uri filePath, String namaMotor, String descMotor, String idKategory, String namaFotoMotor, String idMotor) {
+    public void updateDataMotor(Context context, String namaMotor, String descMotor, String idKategory, String idMotor) {
         view.showProgress();
 
         if (namaMotor.isEmpty()) {
@@ -106,31 +108,14 @@ public class EditByUserPresenter implements EditByUserConstract.Presenter {
 
         if (descMotor.isEmpty()) {
             view.hideProgress();
-            view.showMessage("Desc motor kosong");
-            return;
+            view.showMessage("Desc kosong");
         }
-
-        if (filePath != null) {
-            File myFile = new File(filePath.getPath());
-            Uri selectedImage = getImageContentUri(context, myFile, filePath);
-            String partImage = getPath(context, selectedImage);
-            imageFile = new File(partImage);
-        }
-
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
-        MultipartBody.Part mPartImage = MultipartBody.Part.createFormData("image", imageFile.getName(), requestBody);
-
-        RequestBody mNamaMotor = RequestBody.create(MediaType.parse("multipart/form-data"), namaMotor);
-        RequestBody mDescMotor = RequestBody.create(MediaType.parse("multipart/form-data"), descMotor);
-        RequestBody mNamaFotoMotor = RequestBody.create(MediaType.parse("multipart/form-data"), namaFotoMotor);
 
         Call<MotorResponse> call = apiInterface.updateMotor(
                 Integer.valueOf(idMotor),
                 Integer.valueOf(idKategory),
-                mNamaMotor,
-                mDescMotor,
-                mNamaFotoMotor,
-                mPartImage);
+                namaMotor,
+                descMotor);
         call.enqueue(new Callback<MotorResponse>() {
             @Override
             public void onResponse(Call<MotorResponse> call, Response<MotorResponse> response) {
@@ -154,56 +139,5 @@ public class EditByUserPresenter implements EditByUserConstract.Presenter {
                 view.showMessage(t.getMessage());
             }
         });
-    }
-
-    private String getPath(Context context, Uri filepath) {
-        Cursor cursor = context.getContentResolver().query(filepath, null, null, null, null);
-        cursor.moveToFirst();
-        String document_id = cursor.getString(0);
-        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-        cursor.close();
-
-        cursor = context.getContentResolver().query(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                null, MediaStore.Images.Media._ID + " = ? ",
-                new String[]{document_id}, null);
-        cursor.moveToFirst();
-        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-        cursor.close();
-
-        return path;
-    }
-
-    private Uri getImageContentUri(Context context, File imageFile, Uri filePath) {
-        String fileAbsolutePath = imageFile.getAbsolutePath();
-        Cursor cursor = context.getContentResolver().query(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[]{MediaStore.Images.Media._ID},
-                MediaStore.Images.Media.DATA + "=? ",
-                new String[]{fileAbsolutePath}, null);
-
-        if (cursor != null && cursor.moveToFirst()) {
-            // Apabila file gambar sudah pernah diapakai namun ada kondisi lain yang belum diketahui
-            // Apabila file gambar sudah pernah dipakai pengambilan bukan di galery
-
-            Log.i("Isi Selected if", "Masuk cursor ada");
-            return filePath;
-
-        } else {
-            Log.i("Isi Selected else", "cursor tidak ada");
-            if (imageFile.exists()) {
-                // Apabila file gambar baru belum pernah di pakai
-                Log.i("Isi Selected else", "imagefile exists");
-                ContentValues values = new ContentValues();
-                values.put(MediaStore.Images.Media.DATA, fileAbsolutePath);
-                return context.getContentResolver().insert(
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-            } else {
-                // Apabila file gambar sudah pernah dipakai
-                // Apabila file gambar sudah pernah dipakai di galery
-                Log.i("Isi Selected else", "imagefile tidak exists");
-                return null;
-            }
-        }
     }
 }

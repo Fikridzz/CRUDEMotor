@@ -19,12 +19,6 @@ public interface EditByUserConstract {
     interface Presenter {
         void getKategory();
         void getDetailMotor(String idMotor);
-        void updateDataMotor(Context context,
-                             Uri filePath,
-                             String namaMotor,
-                             String descMotor,
-                             String idKategory,
-                             String namaFotoMotor,
-                             String idMotor);
+        void updateDataMotor(Context context, String namaMotor, String descMotor, String idKategory, String idMotor);
     }
 }
