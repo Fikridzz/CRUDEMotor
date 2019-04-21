@@ -9,7 +9,7 @@ public interface HomeConstract {
         void showProgress();
         void hideProgress();
         void showMotorListKategory(List<MotorData> motorKategoryList);
-        void showMotorListPoplser(List<MotorData> motorPopulerList);
+        void showMotorListPopuler(List<MotorData> motorPopulerList);
         void showMotorListNews(List<MotorData> motorNewsList);
         void showFailurMessage(String msg);
     }

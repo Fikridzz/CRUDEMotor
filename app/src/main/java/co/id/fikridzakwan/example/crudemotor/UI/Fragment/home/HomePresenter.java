@@ -43,7 +43,31 @@ public class HomePresenter implements HomeConstract.Presenter {
 
     @Override
     public void getListPopulerMotor() {
+        view.showProgress();
 
+        Call<MotorResponse> call = apiInterface.getMotorPopuler();
+        call.enqueue(new Callback<MotorResponse>() {
+            @Override
+            public void onResponse(Call<MotorResponse> call, Response<MotorResponse> response) {
+                view.hideProgress();
+
+                if (response.body() != null) {
+                    if (response.body().getResult() == 1) {
+                        view.showMotorListPopuler(response.body().getMotorDataList());
+                    } else {
+                        view.showFailurMessage(response.body().getMessage());
+                    }
+                } else {
+                    view.showFailurMessage("Data kosong");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MotorResponse> call, Throwable t) {
+                view.hideProgress();
+                view.showFailurMessage(t.getMessage());
+            }
+        });
     }
 
     @Override

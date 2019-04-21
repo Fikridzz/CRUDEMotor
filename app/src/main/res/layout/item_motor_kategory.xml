@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
@@ -10,19 +10,20 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:cardCornerRadius="40dp"
+        android:layout_gravity="center"
         android:layout_margin="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/img_kategory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/ic_launcher_round"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher_round" />
 
             <View
                 android:layout_width="match_parent"

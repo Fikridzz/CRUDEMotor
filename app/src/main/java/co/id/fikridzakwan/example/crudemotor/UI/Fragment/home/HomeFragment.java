@@ -10,6 +10,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import co.id.fikridzakwan.example.crudemotor.Data.adapter.AdapterKategoryMotor;
 import co.id.fikridzakwan.example.crudemotor.Data.adapter.AdapterNewsMotor;
+import co.id.fikridzakwan.example.crudemotor.Data.adapter.AdapterPopolerMotor;
 import co.id.fikridzakwan.example.crudemotor.Model.motor.MotorData;
 import co.id.fikridzakwan.example.crudemotor.R;
 
@@ -33,6 +35,8 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
     Unbinder unbinder;
     @BindView(R.id.rv_kategory)
     RecyclerView rvKategory;
+    @BindView(R.id.rv_populer)
+    RecyclerView rvPopuler;
 
     private HomePresenter mHomePresenter = new HomePresenter(this);
 
@@ -50,12 +54,14 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
 
         mHomePresenter.getListKategoryMotor();
         mHomePresenter.getListNewsmotor();
+        mHomePresenter.getListPopulerMotor();
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mHomePresenter.getListNewsmotor();
                 mHomePresenter.getListKategoryMotor();
+                mHomePresenter.getListPopulerMotor();
             }
         });
         return view;
@@ -73,13 +79,14 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
 
     @Override
     public void showMotorListKategory(List<MotorData> motorKategoryList) {
-        rvKategory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvKategory.setLayoutManager(new GridLayoutManager(getContext(), 2));
         rvKategory.setAdapter(new AdapterKategoryMotor(getContext(), motorKategoryList));
     }
 
     @Override
-    public void showMotorListPoplser(List<MotorData> motorPopulerList) {
-
+    public void showMotorListPopuler(List<MotorData> motorPopulerList) {
+        rvPopuler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvPopuler.setAdapter(new AdapterPopolerMotor(getContext(), motorPopulerList));
     }
 
     @Override
@@ -97,6 +104,7 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
     public void onResume() {
         mHomePresenter.getListKategoryMotor();
         mHomePresenter.getListNewsmotor();
+        mHomePresenter.getListPopulerMotor();
         super.onResume();
     }
 }
